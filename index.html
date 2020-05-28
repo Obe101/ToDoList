@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>To Do List</title>
+    <script src="/js/main.js"></script>
 </head>
 
 <body>
+    <div id="validation-summary"></div>
     <form action=""> 
         <label for="title">Title</label>
         <input type="text" name="" id="title">
+        
         <br>
         <br>
         
@@ -39,8 +42,12 @@
     <input type="text" name="Notes" id="notes">
     <br>
     <br>
-    <input type="button" value="Add To List">
+    <input type="button" id="addBtn" value="Add To List">
 
 </form>
+<h3>ToDo list</h3>
+<div id="incompleted-items"></div>
+<div id="completed-items"></div>
+
 </body>
 </html>
