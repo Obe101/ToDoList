@@ -1,0 +1,48 @@
+body{
+    background-color: lightgray;
+}
+form{
+    margin-left: 40%;
+}
+#addBtn{
+    margin-left: 10%;
+}
+
+.todo{
+    box-sizing: border-box;
+    width: 90%;
+    background-color: cyan;
+    padding: .5cm;
+    margin: .25cm;
+    cursor: pointer;
+}
+.todo h3{
+    margin: 0em;
+}
+
+.todo p{
+    margin: 0em;
+}
+.completed{
+    opacity: 50%;
+    background-color: limegreen;
+}
+
+#completed-items{
+    float: right;
+    width: 50%;
+}
+#incompleted-items{
+    float: left;
+    width: 50%;
+
+}
+#txt1,#txt2,#txt3{
+    text-align: center;
+    font: bolder;
+}
+#validation-summary{
+    color: darkred;
+    list-style-type: square;
+}
+

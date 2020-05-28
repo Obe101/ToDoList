@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To Do List</title>
     <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="/css/site.css">
 </head>
 
 <body>
@@ -39,15 +40,20 @@
     <br>
 
     <label for="Notes">Notes</label>
-    <input type="text" name="Notes" id="notes">
+    <br>
+    <textarea name="Notes" id="notes" cols="30" rows="10"> </textarea>
     <br>
     <br>
     <input type="button" id="addBtn" value="Add To List">
 
 </form>
-<h3>ToDo list</h3>
-<div id="incompleted-items"></div>
-<div id="completed-items"></div>
+<h1 id="txt1">ToDo list</h1>
+<div id="incompleted-items">
+    <h3 id="txt2">Incomplete</h3>
+</div>
+<div id="completed-items">
+    <h3 id="txt3">Completed</h3>
+</div>
 
 </body>
 </html>

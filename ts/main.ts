@@ -76,6 +76,7 @@ function displayToDoList(task:ToDoList):void {
     taskNotes.innerText = task.notes;
 
     let taskDiv = document.createElement("div");
+    taskDiv.onclick = markAsComplete;
     taskDiv.classList.add("todo");
     if (task.isCompleted) {
         taskDiv.classList.add("completed");
@@ -117,6 +118,14 @@ function compareDate(date1: Date, date2: Date): number
   if (d1 < d2) return -1;
 }
 
+function markAsComplete() {
+    let taskDiv = <HTMLElement>this;
+    taskDiv.classList.add("completed");
+
+    let completedItems = document.getElementById("complete-items");
+    completedItems.appendChild(taskDiv);
+
+}
 function addErrorMsg(errMsg:string) {
     let errSummary = document.getElementById("validation-summary");
     let errItem = document.createElement("li");
