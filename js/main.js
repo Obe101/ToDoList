@@ -8,6 +8,7 @@ window.onload = function () {
     addbtn.onclick = addTask;
 };
 function addTask() {
+    clearErrors();
     if (isValid()) {
         var task = getToDoTask();
         displayToDoList(task);

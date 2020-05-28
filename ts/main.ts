@@ -11,6 +11,7 @@ window.onload = function () {
 }
 
 function addTask() {
+    clearErrors();
     if (isValid()) {
         let task = getToDoTask();
         displayToDoList(task);
