@@ -88,7 +88,7 @@ function displayToDoList(task:ToDoList):void {
     taskDiv.appendChild(taskDate);
     taskDiv.appendChild(taskNotes);
     
-    if (task.isCompleted) {
+    if (task.isCompleted ) {
         let completedToDos = document.getElementById("completed-items");
         completedToDos.appendChild(taskDiv);
     } else {
@@ -123,7 +123,7 @@ function markAsComplete() {
     let taskDiv = <HTMLElement>this;
     taskDiv.classList.add("completed");
 
-    let completedItems = document.getElementById("complete-items");
+    let completedItems = document.getElementById("completed-items");
     completedItems.appendChild(taskDiv);
 
 }
@@ -133,6 +133,8 @@ function addErrorMsg(errMsg:string) {
     errItem.innerText = errMsg;
     errSummary.appendChild(errItem);
 }
+
+
 
 function clearErrors() {
     let errSummary = document.getElementById("validation-summary");

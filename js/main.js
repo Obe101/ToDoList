@@ -91,7 +91,7 @@ function compareDate(date1, date2) {
 function markAsComplete() {
     var taskDiv = this;
     taskDiv.classList.add("completed");
-    var completedItems = document.getElementById("complete-items");
+    var completedItems = document.getElementById("completed-items");
     completedItems.appendChild(taskDiv);
 }
 function addErrorMsg(errMsg) {

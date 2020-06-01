@@ -10,6 +10,7 @@ form{
 
 .todo{
     box-sizing: border-box;
+    border-radius: .3cm;
     width: 90%;
     background-color: cyan;
     padding: .5cm;
@@ -25,18 +26,23 @@ form{
 }
 .completed{
     opacity: 50%;
+    border-radius: .3cm;
+    margin-left: .2cm;
     background-color: limegreen;
 }
 
 #completed-items{
+    border: .2cm solid black;
     float: right;
-    width: 50%;
+    width: 48.5%;
 }
 #incompleted-items{
+    border: .2cm solid black;
     float: left;
-    width: 50%;
+    width: 48.5%;
 
 }
+
 #txt1,#txt2,#txt3{
     text-align: center;
     font: bolder;
