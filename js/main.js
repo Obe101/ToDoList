@@ -6,12 +6,14 @@ var ToDoList = (function () {
 window.onload = function () {
     var addbtn = getInputById("addBtn");
     addbtn.onclick = addTask;
+    loadSavedTask();
 };
 function addTask() {
     clearErrors();
     if (isValid()) {
         var task = getToDoTask();
         displayToDoList(task);
+        saveToDo(task);
     }
 }
 function isValid() {
@@ -53,7 +55,8 @@ function displayToDoList(task) {
     var titleHeader = document.createElement("h3");
     titleHeader.innerText = task.title;
     var taskDate = document.createElement("p");
-    taskDate.innerText = task.dueDate.toDateString();
+    var dueDate = new Date(task.dueDate.toString());
+    taskDate.innerText = dueDate.toDateString();
     var taskNotes = document.createElement("p");
     taskNotes.innerText = task.notes;
     var taskDiv = document.createElement("div");
@@ -99,6 +102,20 @@ function addErrorMsg(errMsg) {
     var errItem = document.createElement("li");
     errItem.innerText = errMsg;
     errSummary.appendChild(errItem);
+}
+function saveToDo(task) {
+    var taskString = JSON.stringify(task);
+    localStorage.setItem("todo", taskString);
+}
+var todokey = "todo";
+function getToDo() {
+    var taskString = localStorage.getItem(todokey);
+    var task = JSON.parse(taskString);
+    return task;
+}
+function loadSavedTask() {
+    var task = getToDo();
+    displayToDoList(task);
 }
 function clearErrors() {
     var errSummary = document.getElementById("validation-summary");

@@ -8,6 +8,7 @@ class ToDoList{
 window.onload = function () {
     let addbtn = <HTMLElement>getInputById("addBtn");
     addbtn.onclick = addTask;
+    loadSavedTask();
 }
 
 function addTask() {
@@ -15,6 +16,7 @@ function addTask() {
     if (isValid()) {
         let task = getToDoTask();
         displayToDoList(task);
+        saveToDo(task);
     }
 }
 function isValid():boolean{
@@ -71,7 +73,9 @@ function displayToDoList(task:ToDoList):void {
     titleHeader.innerText = task.title;
 
     let taskDate = document.createElement("p");
-    taskDate.innerText = task.dueDate.toDateString();
+    //taskDate.innerText = task.dueDate.toDateString();
+    let dueDate = new Date(task.dueDate.toString())
+    taskDate.innerText = dueDate.toDateString();
 
     let taskNotes = document.createElement("p");
     taskNotes.innerText = task.notes;
@@ -134,8 +138,28 @@ function addErrorMsg(errMsg:string) {
     errSummary.appendChild(errItem);
 }
 
+//Store todoitem in web storage
 
+function saveToDo(task:ToDoList): void {
+    //Convert todoitem into JSON string
+    let taskString = JSON.stringify(task);
 
+    //Save string
+    localStorage.setItem("todo", taskString);
+}
+const todokey = "todo";
+
+//** Get stored todo task or return null if none is found**/
+function getToDo(): ToDoList {
+    let taskString = localStorage.getItem(todokey);
+    let task:ToDoList = JSON.parse(taskString);
+    return task;
+}
+
+function loadSavedTask() {
+    let task = getToDo();
+    displayToDoList(task);
+}
 function clearErrors() {
     let errSummary = document.getElementById("validation-summary");
      errSummary.innerText = "";
