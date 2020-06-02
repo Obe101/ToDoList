@@ -14,6 +14,7 @@ function addTask() {
         var task = getToDoTask();
         displayToDoList(task);
         saveToDo(task);
+        clearBoxes();
     }
 }
 function isValid() {
@@ -140,4 +141,16 @@ function loadSavedTasks() {
 function clearErrors() {
     var errSummary = document.getElementById("validation-summary");
     errSummary.innerText = "";
+}
+function clearBoxes() {
+    var title = document.getElementById("title");
+    title.innerText = "";
+    var select = document.getElementById("importance");
+    select.selectedIndex = 0;
+    var dueDate = document.getElementById("Date");
+    dueDate.innerText = "";
+    var completed = getInputById("complete");
+    completed.checked = false;
+    var notes = document.getElementById("notes");
+    notes.innerText = "";
 }
