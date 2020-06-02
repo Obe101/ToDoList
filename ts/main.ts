@@ -33,6 +33,8 @@ function isValid():boolean{
     let currDate = new Date();
     let dateString =  getInputById("date").value;
     let dueDate = new Date(dateString);
+    console.log(dueDate);
+    console.log(dateString)
     if (compareDate(dueDate, currDate) <= 0 ){
         valid = false;
         addErrorMsg("You must choose a future due date.");
@@ -185,18 +187,18 @@ function clearErrors() {
      errSummary.innerText = "";
 }
 function clearBoxes() {
- let title = document.getElementById("title");
- title.innerText = "";
+ let title = getInputById("title");
+ title.value = "";
  
  let select = <HTMLSelectElement>document.getElementById("importance")
  select.selectedIndex = 0;
 
- let dueDate = document.getElementById("Date");
- dueDate.innerText = "";
+ let dueDate = getInputById("Date");
+ dueDate.value = new Date().toDateString();
 
  let completed = getInputById("complete");
  completed.checked = false;
 
- let notes = document.getElementById("notes");
- notes.innerText = "";
+ let notes = <HTMLTextAreaElement>document.getElementById("notes");
+ notes.value = "";
 }

@@ -27,6 +27,8 @@ function isValid() {
     var currDate = new Date();
     var dateString = getInputById("date").value;
     var dueDate = new Date(dateString);
+    console.log(dueDate);
+    console.log(dateString);
     if (compareDate(dueDate, currDate) <= 0) {
         valid = false;
         addErrorMsg("You must choose a future due date.");
@@ -143,14 +145,14 @@ function clearErrors() {
     errSummary.innerText = "";
 }
 function clearBoxes() {
-    var title = document.getElementById("title");
-    title.innerText = "";
+    var title = getInputById("title");
+    title.value = "";
     var select = document.getElementById("importance");
     select.selectedIndex = 0;
-    var dueDate = document.getElementById("Date");
-    dueDate.innerText = "";
+    var dueDate = getInputById("Date");
+    dueDate.value = new Date().toDateString();
     var completed = getInputById("complete");
     completed.checked = false;
     var notes = document.getElementById("notes");
-    notes.innerText = "";
+    notes.value = "";
 }
