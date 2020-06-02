@@ -8,7 +8,7 @@ class ToDoList{
 window.onload = function () {
     let addbtn = <HTMLElement>getInputById("addBtn");
     addbtn.onclick = addTask;
-    loadSavedTask();
+    loadSavedTasks();
 }
 
 function addTask() {
@@ -73,7 +73,7 @@ function displayToDoList(task:ToDoList):void {
     titleHeader.innerText = task.title;
 
     let taskDate = document.createElement("p");
-    //taskDate.innerText = task.dueDate.toDateString();
+
     let dueDate = new Date(task.dueDate.toString())
     taskDate.innerText = dueDate.toDateString();
 
@@ -83,9 +83,22 @@ function displayToDoList(task:ToDoList):void {
     let taskDiv = document.createElement("div");
     taskDiv.onclick = markAsComplete;
     taskDiv.classList.add("todo");
+
+    let element = <HTMLSelectElement>document.getElementById("importance");
     if (task.isCompleted) {
         taskDiv.classList.add("completed");
         
+    }else{
+
+         if (element.selectedIndex == 1 ) {
+            taskDiv.classList.add("wait");
+        }
+        else if (element.selectedIndex == 2) {
+            taskDiv.classList.add("soon");
+        }
+        else if (element.selectedIndex == 3) {
+            taskDiv.classList.add("asap");
+        }
     }
 
     taskDiv.appendChild(titleHeader);
@@ -141,24 +154,30 @@ function addErrorMsg(errMsg:string) {
 //Store todoitem in web storage
 
 function saveToDo(task:ToDoList): void {
-    //Convert todoitem into JSON string
-    let taskString = JSON.stringify(task);
-
-    //Save string
-    localStorage.setItem("todo", taskString);
+   let currTasks = getToDoTasks();
+   
+   if (currTasks == null) {// no task found
+       currTasks = new Array()
+    }
+    currTasks.push(task);
+   let currTasksString = JSON.stringify(currTasks);
+   localStorage.setItem(todokey, currTasksString)
 }
 const todokey = "todo";
 
-//** Get stored todo task or return null if none is found**/
-function getToDo(): ToDoList {
+//** Get stored todo tasks or return null if none is found**/
+function getToDoTasks(): ToDoList[] {
     let taskString = localStorage.getItem(todokey);
-    let task:ToDoList = JSON.parse(taskString);
+    let task:ToDoList[] = JSON.parse(taskString);
     return task;
 }
 
-function loadSavedTask() {
-    let task = getToDo();
-    displayToDoList(task);
+function loadSavedTasks() {
+    let taskArray = getToDoTasks();
+    for (let i = 0; i < taskArray.length; i++) {
+        let currTasks = taskArray[i];
+        displayToDoList(currTasks)
+    }
 }
 function clearErrors() {
     let errSummary = document.getElementById("validation-summary");

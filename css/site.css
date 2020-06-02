@@ -8,11 +8,32 @@ form{
     margin-left: 10%;
 }
 
-.todo{
+.wait{
     box-sizing: border-box;
     border-radius: .3cm;
     width: 90%;
-    background-color: cyan;
+    background-color:yellow;
+    font-weight: bolder;
+    padding: .5cm;
+    margin: .25cm;
+    cursor: pointer;
+}
+.soon{
+    box-sizing: border-box;
+    border-radius: .3cm;
+    width: 90%;
+    background-color:orange;
+    font-weight: bolder;
+    padding: .5cm;
+    margin: .25cm;
+    cursor: pointer;
+}
+.asap{
+    box-sizing: border-box;
+    border-radius: .3cm;
+    width: 90%;
+    background-color:red;
+    font-weight: bolder;
     padding: .5cm;
     margin: .25cm;
     cursor: pointer;
